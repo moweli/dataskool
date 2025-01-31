@@ -10,39 +10,41 @@ import { SocialLinks } from "@/components/ui/social-links";
 const testimonials = [
   {
     author: {
-      name: "Emma Thompson",
-      handle: "@emmaai",
-      avatar:
-        "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=150&h=150&fit=crop&crop=face",
-    },
-    text: "Using this AI platform has transformed how we handle data analysis. The speed and accuracy are unprecedented.",
-    href: "https://twitter.com/emmaai",
-  },
-  {
-    author: {
-      name: "David Park",
-      handle: "@davidtech",
+      name: "Adam Ali",
+      handle: "@adamali",
       avatar:
         "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop&crop=face",
+
     },
-    text: "The API integration is flawless. We've reduced our development time by 60% since implementing this solution.",
-    href: "https://twitter.com/davidtech",
+    text: "Started with the SQL Fundamentals weekend course and ended up doing the full Job Ready package. The hands-on practice and small class size made such a difference - landed a junior data analyst role at Lloyds after just 8 weeks. Worth every penny!",
+//    href: "https://twitter.com/emmaai",
   },
   {
     author: {
-      name: "Sofia Rodriguez",
-      handle: "@sofiaml",
+      name: "Fatima Ahmed",
+      handle: "@fahmed29",
       avatar:
-        "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&h=150&fit=crop&crop=face",
+              "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=150&h=150&fit=crop&crop=face",
+
     },
-    text: "Finally, an AI tool that actually understands context! The accuracy in natural language processing is impressive.",
+    text: "Was stuck doing basic Excel at work, but the Python + SQL weekend courses changed everything. The instructor actually explained things properly, unlike YouTube tutorials. Just passed my DP-900 exam and got a £12K salary bump!",
+//    href: "https://twitter.com/davidtech",
+  },
+  {
+    author: {
+      name: "Mohammed Al-Rashid",
+      handle: "",
+      avatar:
+-        "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&h=150&fit=crop&crop=face",
+    },
+    text: "Brilliant CV review session - they helped me highlight my new SQL skills perfectly. Went from retail management to junior BI developer in 3 months. The interview prep workshop was spot on for tech role questions.",
   },
 ];
 
 const demoData = {
   heading: "Ready to Get Started?",
   description:
-    "Join thousands of satisfied customers using our platform to build amazing websites.",
+    "Join our hands-on workshop and learn to write queries with confidence. Perfect for beginners and career switchers.",
   buttons: {
     primary: {
       text: "Get Started",
@@ -59,13 +61,13 @@ function MarqueeEffectDouble() {
   return (
     <div className="w-full">
       <div className="bg-green-500 py-4">
-        <MarqueeAnimation direction="left" baseVelocity={1}>
-          Data Mastery • AI-Powered Analytics • Real-Time Insights •
+        <MarqueeAnimation direction="left" baseVelocity={0.5}>
+        Data Jobs Average £50K in London • 230k Data Jobs • SQL is the #1 Required Tech Skill in 2024 •
         </MarqueeAnimation>
       </div>
       <div className="bg-purple-500 py-4">
-        <MarqueeAnimation direction="right" baseVelocity={1}>
-          Book a Free Consultation • Transform Your Business •
+        <MarqueeAnimation direction="right" baseVelocity={0.5}>
+        100+ Success Stories in 2024 • Real Projects • Interview Prep & CV Workshop Included
         </MarqueeAnimation>
       </div>
     </div>
@@ -73,33 +75,35 @@ function MarqueeEffectDouble() {
 }
 
 const features = [
-  { name: "Basic Analytics", included: "starter" },
-  { name: "Up to 5 team members", included: "starter" },
-  { name: "Basic support", included: "starter" },
-  { name: "Advanced Analytics", included: "pro" },
-  { name: "Up to 20 team members", included: "pro" },
-  { name: "Priority support", included: "pro" },
-  { name: "Custom integrations", included: "all" },
-  { name: "Unlimited team members", included: "all" },
-  { name: "24/7 phone support", included: "all" },
+  { name: "1. SQL Fundamentals", included: "starter" },
+  { name: "2. Hands On labs", included: "starter" },
+  { name: "3. Python Fundamentals", included: "intermediate" },
+  { name: "4. Discord Community Access", included: "intermediate" },
+  { name: "5. SQL Intermediate ", included: "all" },
+  { name: "6. Microsoft Cloud Fundamentals DP-900 Exam", included: "all" },
+  { name: "7. Interview Prep Workshop", included: "all" },
+  { name: "8. CV Review Session", included: "all" },
+  { name: "9. LinkedIn Profile Review", included: "all" },
+  { name: "10.Practice Tests", included: "all" },
 ];
 
 const plans = [
   {
     name: "Starter",
-    price: { monthly: 15, yearly: 144 },
+    price: { OneOff: 200, Installment: 0 },
     level: "starter",
   },
   {
-    name: "Pro",
-    price: { monthly: 49, yearly: 470 },
-    level: "pro",
-    popular: true,
+    name: "Intermediate",
+    price: { OneOff: 300, Installment: 0 },
+    level: "intermediate",
   },
   {
-    name: "Enterprise",
-    price: { monthly: 99, yearly: 990 },
+    name: "Job Ready",
+    price: { OneOff: 600, Installment: 300 },
     level: "all",
+    popular: true,
+
   },
 ];
 
@@ -134,14 +138,14 @@ function App() {
   return (
     <>
       <HeroSection
-        title="Welcome to Our Platform"
+        title="Welcome to Data Schoool"
         subtitle={{
-          regular: "Transform your ideas into ",
-          gradient: "beautiful digital experiences",
+          regular: "85% of Online Courses End in Failure",
+          gradient: " Don't Be Another Statistic",
         }}
-        description="Transform your ideas into reality with our comprehensive suite of development tools and resources."
+        description="Break free from the online learning trap with our proven in-person data bootcamp"
         ctaText="Get Started"
-        ctaHref="/signup"
+        ctaHref="#plans"
         bottomImage={{
           light: "https://www.launchuicomponents.com/app-light.png",
           dark: "https://www.launchuicomponents.com/app-dark.png",
@@ -156,8 +160,8 @@ function App() {
       />
       <MarqueeEffectDouble />
       <TestimonialsSection
-        title="Trusted by developers worldwide"
-        description="Join thousands of developers who are already building the future with our AI platform"
+        title="Your £45K Data Career Starts This Saturday"
+        description="Skip the 6-month online courses. Get certified and hired in weeks with London's highest-rated in-person data training."
         testimonials={testimonials}
       />
       <Cta10 {...demoData} />
@@ -165,8 +169,8 @@ function App() {
       <PricingTable
         features={features}
         plans={plans}
-        defaultPlan="pro"
-        defaultInterval="monthly"
+        defaultPlan="all"
+        defaultInterval="One Off"
         onPlanSelect={(plan) => console.log("Selected plan:", plan)}
         containerClassName="py-12"
         buttonClassName="bg-primary hover:bg-primary/90"

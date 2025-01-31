@@ -198,3 +198,9 @@ button:focus-visible {
     @apply bg-background text-foreground;
   }
 }
+
+@layer utilities {
+  .aspect-\[9\/16\] {
+    aspect-ratio: 9 / 16;
+  }
+}

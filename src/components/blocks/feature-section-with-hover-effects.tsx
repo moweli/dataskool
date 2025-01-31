@@ -1,60 +1,64 @@
 import { cn } from "@/lib/utils";
 import {
   IconAdjustmentsBolt,
-  IconCloud,
-  IconCurrencyDollar,
-  IconEaseInOut,
+  // IconCloud,
   IconHeart,
-  IconHelp,
   IconRouteAltLeft,
   IconTerminal2,
+  IconCurrencyPound,
+  IconUsers,
+  IconCalendar,
+  IconBriefcase,
 } from "@tabler/icons-react";
 
 export function FeaturesSectionWithHoverEffects() {
   const features = [
     {
-      title: "Built for developers",
+      title: "Job Program",
       description:
-        "Built for engineers, developers, dreamers, thinkers and doers.",
+        "Land a Data role within 6-9 months. 65% of our graduates secure positions within 6-9 months",
+      icon: <IconCurrencyPound />,
+    },
+    {
+      title: "Industry-Relevant SQL & Python",
+      description:
+        "No faff, no outdated material. Learn exactly what FTSE 100 companies are looking for. Perfect for career changers and upskilling professionals.",
       icon: <IconTerminal2 />,
     },
     {
-      title: "Ease of use",
+      title: "Fast-Track to £45K+ Starting Salary",
       description:
-        "It's as easy as using an Apple, and as expensive as buying one.",
-      icon: <IconEaseInOut />,
-    },
-    {
-      title: "Pricing like no other",
-      description:
-        "Our prices are best in the market. No cap, no lock, no credit card required.",
-      icon: <IconCurrencyDollar />,
-    },
-    {
-      title: "100% Uptime guarantee",
-      description: "We just cannot be taken down by anyone.",
-      icon: <IconCloud />,
-    },
-    {
-      title: "Multi-tenant Architecture",
-      description: "You can simply share passwords instead of buying new seats",
-      icon: <IconRouteAltLeft />,
-    },
-    {
-      title: "24/7 Customer Support",
-      description:
-        "We are available a 100% of the time. Atleast our AI Agents are.",
-      icon: <IconHelp />,
-    },
-    {
-      title: "Money back guarantee",
-      description:
-        "If you donot like EveryAI, we will convince you to like us.",
+        "Our graduates typically start at £45,000-£55,000. Skip the junior positions - we'll help you land proper tech roles at leading UK firms.",
       icon: <IconAdjustmentsBolt />,
     },
     {
-      title: "And everything else",
-      description: "I just ran out of copy ideas. Accept my sincere apologies",
+      title: "Hands-on Projects, Not Just Theory",
+      description:
+        "Work with real datasets from British companies. Build a portfolio that properly showcases your skills to employers, not just another certificate.",
+      icon: <IconRouteAltLeft />,
+    },
+    {
+      title: "Small Class Sizes",
+      description:
+        "Maximum 10 students per class. Stuck on a problem? Your instructor is right there in the room - no more waiting for forum responses or YouTube tutorials.",
+      icon: <IconUsers />,
+    },
+    {
+      title: "Weekend Classes That Work",
+      description:
+        "Keep your current job whilst training , Full-day Saturdays. Perfect for London professionals.",
+      icon: <IconCalendar />,
+    },
+    {
+      title: "Full Career Support Package",
+      description:
+        "Mock interviews with UK tech recruiters. CV optimisation from industry experts. We're with you until you land that role - simple as that.",
+      icon: <IconBriefcase />,
+    },
+    {
+      title: "Join Our Free Career Webinar",
+      description:
+        "Live every Wednesday at 6:30PM. Learn about SQL careers, salaries, and how to break into tech. Plus exclusive course discount for attendees.",
       icon: <IconHeart />,
     },
   ];
