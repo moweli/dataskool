@@ -1,35 +1,35 @@
-import * as React from "react"
-import { Button } from "@/components/ui/button"
-import { cn } from "@/lib/utils"
-import { CheckIcon, ArrowRightIcon } from "@radix-ui/react-icons"
-import NumberFlow from "@number-flow/react"
+import * as React from "react";
+import { Button } from "@/components/ui/button";
+import { cn } from "@/lib/utils";
+import { CheckIcon } from "@radix-ui/react-icons";
+import NumberFlow from "@number-flow/react";
 
-export type PlanLevel = "starter" | "intermediate" | "all" | string
+export type PlanLevel = "starter" | "intermediate" | "all" | string;
 
 export interface PricingFeature {
-  name: string
-  included: PlanLevel | null
+  name: string;
+  included: PlanLevel | null;
 }
 
 export interface PricingPlan {
-  name: string
-  level: PlanLevel
+  name: string;
+  level: PlanLevel;
   price: {
-    OneOff: number
-    Installment: number
-  }
-  popular?: boolean
+    OneOff: number;
+    Installment: number;
+  };
+  popular?: boolean;
 }
 
 export interface PricingTableProps
   extends React.HTMLAttributes<HTMLDivElement> {
-  features: PricingFeature[]
-  plans: PricingPlan[]
-  onPlanSelect?: (plan: PlanLevel) => void
-  defaultPlan?: PlanLevel
-  defaultInterval?: "One Off" | "Instalment"
-  containerClassName?: string
-  buttonClassName?: string
+  features: PricingFeature[];
+  plans: PricingPlan[];
+  onPlanSelect?: (plan: PlanLevel) => void;
+  defaultPlan?: PlanLevel;
+  defaultInterval?: "One Off" | "Instalment";
+  containerClassName?: string;
+  buttonClassName?: string;
 }
 
 export function PricingTable({
@@ -38,48 +38,48 @@ export function PricingTable({
   onPlanSelect,
   defaultPlan = "all",
   defaultInterval = "One Off",
-  className,
+  // className,
   containerClassName,
   buttonClassName,
   ...props
 }: PricingTableProps) {
-  const [isInstalment, setIsInstalment] = React.useState(defaultInterval === "Instalment")
-  const [selectedPlan, setSelectedPlan] = React.useState<PlanLevel>(defaultPlan)
+  const [isInstalment, setIsInstalment] = React.useState(
+    defaultInterval === "Instalment"
+  );
+  const [selectedPlan, setSelectedPlan] =
+    React.useState<PlanLevel>(defaultPlan);
 
   const handlePlanSelect = (plan: PlanLevel) => {
-    setSelectedPlan(plan)
-    onPlanSelect?.(plan)
-  }
+    setSelectedPlan(plan);
+    onPlanSelect?.(plan);
+  };
 
   React.useEffect(() => {
     if (selectedPlan !== "all" && isInstalment) {
-      setIsInstalment(false)
+      setIsInstalment(false);
     }
-  }, [selectedPlan, isInstalment])
+  }, [selectedPlan, isInstalment]);
 
   return (
     <section
       id="plans"
       className={cn(
         "bg-background text-foreground",
-        "py-12 sm:py-24 md:py-32 px-4",
-        "fade-bottom overflow-hidden pb-0",
-      )}
-    >
+        "py-8 sm:py-16 md:py-24 px-4",
+        "fade-bottom pb-0"
+      )}>
       <div
         className={cn("w-full max-w-3xl mx-auto px-4", containerClassName)}
-        {...props}
-      >
-        <div className="flex justify-end mb-4 sm:mb-8">
+        {...props}>
+        <div className="flex justify-end">
           <div className="inline-flex items-center gap-2 text-xs sm:text-sm">
             <button
               type="button"
               onClick={() => setIsInstalment(false)}
               className={cn(
                 "px-3 py-1 rounded-md transition-colors",
-                !isInstalment ? "bg-zinc-100 dark:bg-zinc-800" : "text-zinc-500",
-              )}
-            >
+                !isInstalment ? "bg-zinc-100 dark:bg-zinc-800" : "text-zinc-500"
+              )}>
               One Off
             </button>
             <button
@@ -90,14 +90,13 @@ export function PricingTable({
                 isInstalment ? "bg-zinc-100 dark:bg-zinc-800" : "text-zinc-500",
                 selectedPlan !== "all" && "opacity-50 cursor-not-allowed"
               )}
-              disabled={selectedPlan !== "all"}
-            >
+              disabled={selectedPlan !== "all"}>
               2 x Instalments
             </button>
           </div>
         </div>
 
-        <div className="flex flex-col sm:flex-row gap-4 mb-8">
+        <div className="flex flex-col sm:flex-row gap-4 mb-4">
           {plans.map((plan) => (
             <button
               key={plan.name}
@@ -107,14 +106,13 @@ export function PricingTable({
                 "flex-1 p-4 rounded-xl text-left transition-all",
                 "border border-zinc-200 dark:border-zinc-800",
                 selectedPlan === plan.level &&
-                  "ring-2 ring-blue-500 dark:ring-blue-400",
-              )}
-            >
+                  "ring-2 ring-blue-500 dark:ring-blue-400"
+              )}>
               <div className="flex items-center justify-between mb-2">
                 <span className="text-sm font-medium">{plan.name}</span>
                 {plan.popular && (
                   <span className="text-xs bg-blue-100 dark:bg-blue-900 text-blue-600 dark:text-blue-300 px-2 py-0.5 rounded-full">
-                    Popular
+                    Recommended
                   </span>
                 )}
               </div>
@@ -127,7 +125,9 @@ export function PricingTable({
                       style: "currency",
                       currency: "GBP",
                     }}
-                    value={isInstalment ? plan.price.Installment : plan.price.OneOff}
+                    value={
+                      isInstalment ? plan.price.Installment : plan.price.OneOff
+                    }
                     className="text-2xl font-bold"
                   />
                 )}
@@ -155,8 +155,7 @@ export function PricingTable({
                   {plans.map((plan) => (
                     <div
                       key={plan.level}
-                      className="w-16 text-center font-medium"
-                    >
+                      className="w-16 text-center font-medium">
                       {plan.name}
                       <br />
                       <span className="text-xs text-zinc-500">
@@ -174,9 +173,8 @@ export function PricingTable({
                   className={cn(
                     "flex items-center p-4 transition-colors",
                     shouldShowCheck(feature.included, selectedPlan) &&
-                      "bg-blue-50/50 dark:bg-blue-900/20",
-                  )}
-                >
+                      "bg-white/50 dark:bg-white/5"
+                  )}>
                   <div className="flex-1 text-sm">{feature.name}</div>
                   <div className="flex items-center gap-8 text-sm">
                     {plans.map((plan) => (
@@ -184,9 +182,8 @@ export function PricingTable({
                         key={plan.level}
                         className={cn(
                           "w-16 flex justify-center",
-                          plan.level === selectedPlan && "font-medium",
-                        )}
-                      >
+                          plan.level === selectedPlan && "font-medium"
+                        )}>
                         {shouldShowCheck(feature.included, plan.level) ? (
                           <CheckIcon className="w-5 h-5 text-blue-500" />
                         ) : (
@@ -203,40 +200,36 @@ export function PricingTable({
           </div>
         </div>
 
-        <div className="mt-8 text-center">
+        <div className="mt-4 text-center">
           <Button
+            asChild
             className={cn(
               "w-full sm:w-auto bg-blue-500 hover:bg-blue-600 px-8 py-2 rounded-xl cursor-pointer",
-              buttonClassName,
-            )}
-            onClick={() => document.getElementById('plans')?.scrollIntoView({ behavior: 'smooth' })}
-          >
-            Get started with {plans.find((p) => p.level === selectedPlan)?.name}
-            <ArrowRightIcon className="w-4 h-4 ml-2" />
+              buttonClassName
+            )}>
+            <a
+              href="https://calendly.com/dataschool_uk/webinar"
+              target="_blank"
+              rel="noopener noreferrer">
+              Book a consultation for{" "}
+              {plans.find((p) => p.level === selectedPlan)?.name}
+            </a>
           </Button>
-        </div>
-
-        <div className="mt-8">
-          <img 
-            src="/victoria-to-bromley-south.png" 
-            alt="Victoria to Bromley South transport map" 
-            className="mx-auto max-w-xs md:max-w-md rounded-lg border border-gray-200 dark:border-gray-800 shadow-lg"
-          />
         </div>
       </div>
     </section>
-  )
+  );
 }
 
 function shouldShowCheck(
   included: PricingFeature["included"],
-  level: string,
+  level: string
 ): boolean {
   if (included === null) return false;
-  
+
   // Define our tier hierarchy
   const tiers = ["starter", "intermediate", "all"];
-  
+
   // If both values are in our known tiers, compare their positions
   if (tiers.includes(included) && tiers.includes(level)) {
     const includedIndex = tiers.indexOf(included);

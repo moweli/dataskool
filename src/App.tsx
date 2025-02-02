@@ -6,6 +6,7 @@ import { FeaturesSectionWithHoverEffects } from "./components/blocks/feature-sec
 import { MarqueeAnimation } from "@/components/ui/marquee-effect";
 import { PricingTable } from "@/components/blocks/pricing-table";
 import { SocialLinks } from "@/components/ui/social-links";
+import { TransportMap } from "./components/blocks/transport-map";
 
 const testimonials = [
   {
@@ -14,28 +15,26 @@ const testimonials = [
       handle: "@adamali",
       avatar:
         "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop&crop=face",
-
     },
     text: "Started with the SQL Fundamentals weekend course and ended up doing the full Job Ready package. The hands-on practice and small class size made such a difference - landed a junior data analyst role at Lloyds after just 8 weeks. Worth every penny!",
-//    href: "https://twitter.com/emmaai",
+    //    href: "https://twitter.com/emmaai",
   },
   {
     author: {
       name: "Fatima Ahmed",
       handle: "@fahmed29",
       avatar:
-              "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=150&h=150&fit=crop&crop=face",
-
+        "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=150&h=150&fit=crop&crop=face",
     },
     text: "Was stuck doing basic Excel at work, but the Python + SQL weekend courses changed everything. The instructor actually explained things properly, unlike YouTube tutorials. Just passed my DP-900 exam and got a £12K salary bump!",
-//    href: "https://twitter.com/davidtech",
+    //    href: "https://twitter.com/davidtech",
   },
   {
     author: {
       name: "Mohammed Al-Rashid",
       handle: "",
       avatar:
--        "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&h=150&fit=crop&crop=face",
+        "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&h=150&fit=crop&crop=face",
     },
     text: "Brilliant CV review session - they helped me highlight my new SQL skills perfectly. Went from retail management to junior BI developer in 3 months. The interview prep workshop was spot on for tech role questions.",
   },
@@ -47,27 +46,30 @@ const demoData = {
     "Join our hands-on workshop and learn to write queries with confidence. Perfect for beginners and career switchers.",
   buttons: {
     primary: {
-      text: "Get Started",
-      url: "https://www.shadcnblocks.com",
+      text: "Book a consultation",
+      url: "https://calendly.com/dataschool_uk/webinar",
+      target: "_blank",
     },
-    secondary: {
-      text: "Learn More",
-      url: "https://www.shadcnblocks.com",
-    },
+    // secondary: {
+    //   text: "Learn More",
+    //   url: "https://www.shadcnblocks.com",
+    // },
   },
 };
 
 function MarqueeEffectDouble() {
   return (
     <div className="w-full">
-      <div className="bg-green-500 py-4">
+      <div className="bg-green-500 py-4 text-xs md:text-sm">
         <MarqueeAnimation direction="left" baseVelocity={0.5}>
-        Data Jobs Average £50K in London • 230k Data Jobs • SQL is the #1 Required Tech Skill in 2024 •
+          Data Jobs Average £50K in London • 230k Data Jobs • SQL is the #1
+          Required Tech Skill in 2025 •
         </MarqueeAnimation>
       </div>
-      <div className="bg-purple-500 py-4">
+      <div className="bg-purple-500 py-4 text-xs md:text-sm">
         <MarqueeAnimation direction="right" baseVelocity={0.5}>
-        100+ Success Stories in 2024 • Real Projects • Interview Prep & CV Workshop Included
+          100+ Success Stories in 2025 • Real Projects • Interview Prep & CV
+          Workshop Included
         </MarqueeAnimation>
       </div>
     </div>
@@ -100,10 +102,9 @@ const plans = [
   },
   {
     name: "Job Ready",
-    price: { OneOff: 600, Installment: 300 },
+    price: { OneOff: 600, Installment: 375 },
     level: "all",
     popular: true,
-
   },
 ];
 
@@ -116,10 +117,10 @@ const socials = [
     name: "LinkedIn",
     image: "https://link-hover-lndev.vercel.app/linkedin.png",
   },
-  {
-    name: "Spotify",
-    image: "https://link-hover-lndev.vercel.app/spotify.png",
-  },
+  // {
+  //   name: "Spotify",
+  //   image: "https://link-hover-lndev.vercel.app/spotify.png",
+  // },
   {
     name: "TikTok",
     image: "https://link-hover-lndev.vercel.app/tiktok.png",
@@ -128,7 +129,7 @@ const socials = [
 
 function SocialLinksDemo() {
   return (
-    <main className="relative flex w-full items-start justify-center px-4 py-10 md:items-center">
+    <main className="relative mt-20 flex w-full items-start justify-center px-4 py-10 md:items-center">
       <SocialLinks socials={socials} />
     </main>
   );
@@ -138,14 +139,15 @@ function App() {
   return (
     <>
       <HeroSection
-        title="Welcome to Data Schoool"
+        title="Welcome to Data School UK"
         subtitle={{
           regular: "85% of Online Courses End in Failure",
           gradient: " Don't Be Another Statistic",
         }}
         description="Break free from the online learning trap with our proven in-person data bootcamp"
-        ctaText="Get Started"
-        ctaHref="#plans"
+        ctaText="Book a consultation"
+        ctaHref="https://calendly.com/dataschool_uk/webinar"
+        ctaTarget="_blank"
         bottomImage={{
           light: "https://www.launchuicomponents.com/app-light.png",
           dark: "https://www.launchuicomponents.com/app-dark.png",
@@ -174,6 +176,11 @@ function App() {
         onPlanSelect={(plan) => console.log("Selected plan:", plan)}
         containerClassName="py-12"
         buttonClassName="bg-primary hover:bg-primary/90"
+      />
+      <TransportMap
+        src="images/map.png"
+        alt="Victoria to Bromley South transport map"
+        className="mb-16"
       />
       <SocialLinksDemo />
     </>
